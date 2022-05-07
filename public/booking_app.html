@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booking App</title>
+    <script src="javascripts/booking_app.js"></script>
+  </head>
+  <body>
+    <h1>Booking App</h1>
+    <button id="schedule-button">See available schedules count</button>
+    <div id="schedules"></div>
+
+    <h2>Add Staff</h2>
+    <form id="add-staff-form" method="post" action="/api/staff_members">
+      <p><label>Email: <input type="email" name="email"></label></p>
+      <p><label>Name: <input type="text" name="name"></label></p>
+      <p><button type="submit">Submit</button></p>
+    </form>
+
+    <h2>Add Schedule</h2>
+    <button id="add-schedule-button">Add more schedules</button>
+    <form id="add-schedule-form" method="post" action="/api/schedules">
+      <div id="add-schedules">
+        <fieldset id="schedule-1">
+          <legend>Schedule 1</legend>
+          <p class="staff-name">
+            <label for="staff-name-1">Staff Name: </label>
+            <select name="staff-name-1"></select>
+          </p>
+          <p class="date">
+            <label for="date-1">Date: </label>
+            <input type="text" name="date-1" placeholder="mm-dd-yy">
+          </p>
+          <p class="time">
+            <label for="time-1">Time: </label>
+            <input type="text" name="time-1" placeholder="hh:mm">
+          </p>
+        </fieldset>
+      </div>
+      <button id="submit-add-schedules-button" type="submit">Submit</button>
+    </form>
+
+    <div id="delete-schedule">
+      <h2>Delete Schedule</h2>
+      <form id="delete-schedule-form">
+        <div>
+          <label for="schedule_id">Select a schedule: </label>
+          <select id="delete-schedule-dropdown" name="schedule_id"></select>
+        </div>
+        <button id="delete-schedule-button" type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div id="book-schedule">
+      <h2>Book Schedule</h2>
+      <button id="populate-available-schedules">Populate available schedules</button>
+      <form id="book-schedule-form" method="post" action="/api/bookings">
+        <div id="select-schedule">
+          <label for="id">Please select one schedule </label>
+          <select id="select-schedule-dropdown" name="id"></select>
+        </div>
+        <div>
+          <label for="student_email">Email: </label>
+          <input type="email" name="student_email">
+          <button id="submit-book-schedule-button" type="submit">Submit</button>
+        </div>
+      </form>
+
+      <div id="new-student-area"></div>
+    </div>
+  </body>
+
+  <div id="bookings">
+    <h2>Bookings</h2>
+    <ul id="booking-dates"></ul>
+  </div>
+
+  <div id="cancel-booking">
+    <h2>Cancel Booking</h2>
+    <form id="cancel-booking-form">
+      <div>
+        <label for="booking_id">Select a booking: </label>
+        <select id="cancel-booking-dropdown" name="booking_id"></select>
+      </div>
+      <button id="cancel-booking-button" type="submit">Submit</button>
+    </form>
+  </div>
+</html>
